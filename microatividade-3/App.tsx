@@ -1,20 +1,78 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {Image, ScrollView, Text} from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your appo!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const logo = {
+  uri: 'https://reactnative.dev/img/tiny_logo.png',
+  width: 64,
+  height: 64,
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => (
+
+  <ScrollView>
+    <Text style={{fontSize: 65, marginTop: 15}}>Scroll me plz</Text>
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Text style={{fontSize: 85}}>If you like</Text>
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Text style={{fontSize: 90}}>Scrolling down</Text>
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Text style={{fontSize: 75}}>What's the best</Text>
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Text style={{fontSize: 70}}>Framework around?</Text>
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Image source={logo} />
+
+    <Text style={{fontSize: 60}}>React Native</Text>
+
+  </ScrollView>
+
+);
+
+export default App;
