@@ -70,6 +70,4 @@ const FlatListBasics = () => {
 
 };
 
- 
-
 export default FlatListBasics;
