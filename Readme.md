@@ -85,6 +85,26 @@ const handleSubmit = () => {
 
 O aplicativo foi estilizado utilizando o componente `StyleSheet` do React Native, com foco em uma interface amigável e moderna. O texto é exibido na cor branca para garantir um contraste claro com o fundo escuro, melhorando a legibilidade e a experiência do usuário.
 
+```js
+const styles = StyleSheet.create({
+  form: {
+    marginBottom: 20,
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    color: 'white', // Texto branco
+  },
+  error: {
+    color: 'red',
+    marginBottom: 10,
+  },
+});
+```
+
 ### Navegação e Rotas
 
 A navegação entre a tela de cadastro e a tela de listagem de fornecedores é gerenciada por uma biblioteca de navegação, como o React Navigation. Isso permite que os usuários se movam entre diferentes telas de forma fluida e eficiente.
@@ -92,6 +112,13 @@ A navegação entre a tela de cadastro e a tela de listagem de fornecedores é g
 ### Integração de Imagens
 
 Para a exibição de imagens associadas aos fornecedores, o aplicativo suporta tanto imagens no formato base64 quanto URLs externas. Essa flexibilidade permite o carregamento dinâmico de logotipos ou fotos relacionadas aos fornecedores.
+
+```js
+<Image
+  style={styles.logo}
+  source={{ uri: 'data:image/png;base64,iVBORw0KGgoAAAANS...' }}
+/>
+```
 
 ### Experiência do Usuário
 
