@@ -2,124 +2,117 @@
 
 ## Informações do Curso
 
-- **Projeto:** Meeting - Aplicativo de Cadastro de Fornecedores
+- **Projeto:** Aplicativo de Agência de Viagens
 - **Curso:** Desenvolvimento Full Stack
 - **Universidade:** Estácio de Sá - Campus São José dos Pinhais
-- **Período:** 4º
+- **Período:** 4º Período
 - **Turma:** 9001
-- **Tecnologia:** React Native
-- **Tutor:** Jhonatan Alves
-- **Matéria:** Vamos Criar um App (RPG0023)
+- **Tecnologia:** Flutter
+- **Tutor:** Altamira de Souza Queiroz
+- **Matéria:** Posso Criar um App de Outra Forma? (RPG0024)
 
 ## Informações do Aluno
 
 - **Nome:** Dilnae Rennan Souza dos Santos
 - **Matrícula:** 202302631631
 
-## Análise e Conclusão
+## Estruturação do Projeto no Flutter
 
-### Estruturação do Projeto no React Native
+No projeto da agência de viagens, a arquitetura seguiu a separação por componentes, organizada da seguinte forma:
 
-No React Native, a estrutura do projeto segue a divisão por componentes, onde cada funcionalidade ou parte da interface é representada por um componente modular. O projeto “Meeting” foi organizado da seguinte forma:
+- **Components:** Contém componentes reutilizáveis como o `BannerSection`, `TitleSection`, `ButtonGroup`, `TextSection` e `SearchBar`. Isso permitiu a modularização e reutilização de partes da interface.
+- **Pages:** Contém as páginas principais do aplicativo, como `DestinosPage`, `PacotesPage`, `ContatoPage`, e `SobreNosPage`.
+- **Assets:** Armazena imagens e ícones utilizados na interface.
+- **Main.dart:** Arquivo principal que configura a navegação entre páginas e define a estrutura básica do aplicativo.
 
-- **Components**: Contém componentes reutilizáveis, como inputs, botões, e visualização de fornecedores.
-- **Screens**: Contém telas do aplicativo, como a tela de cadastro de fornecedores e a listagem de fornecedores.
-- **Assets**: Pasta dedicada para armazenar imagens e outros recursos estáticos usados no aplicativo.
-- **App.js**: Arquivo principal que centraliza a navegação e a lógica inicial do aplicativo.
+### Estrutura do Código
 
-### Utilização de Componentes Básicos do React Native
+O aplicativo foi construído com o uso de vários widgets principais do Flutter, que possibilitaram uma interface fluida e responsiva. Alguns dos principais componentes utilizados incluem:
 
-O aplicativo foi construído utilizando os seguintes componentes principais do React Native:
-
-- **View**: Usada para definir a estrutura de layout de cada tela e agrupar elementos.
-- **Text**: Utilizada para exibir texto.
-- **TextInput**: Permite que o usuário insira informações, como nome e endereço do fornecedor.
-- **Image**: Usada para exibir logotipos dos fornecedores.
-- **Button**: Utilizado para submeter os dados de cadastro.
+- **Scaffold:** Estrutura básica de cada página, que inclui a barra de navegação, corpo da página, e barra de navegação inferior.
+- **Column e Row:** Para a organização dos elementos de forma vertical e horizontal.
+- **TextField:** Para implementar a barra de pesquisa de destinos.
+- **BottomNavigationBar:** Para navegação entre as páginas principais do aplicativo.
 
 ### Funcionalidades do Aplicativo
 
-#### Cadastro de Fornecedores
+#### Pesquisa de Destinos
 
-O aplicativo permite o cadastro de fornecedores com os seguintes campos:
-- **Nome do Fornecedor** (TextInput)
-- **Endereço** (TextInput)
-- **Contato** (TextInput)
-- **Categoria de Produto** (TextInput)
-- **Imagem do Fornecedor** (Image)
+- O usuário pode pesquisar destinos utilizando uma barra de pesquisa (`SearchBar`). Ao digitar um termo específico, o app filtra os destinos, mostrando apenas aqueles que correspondem à pesquisa.
+- Se a pesquisa estiver vazia, todos os destinos disponíveis são exibidos.
 
-#### Listagem de Fornecedores
+#### Seções de Destinos
 
-O aplicativo exibe uma lista de fornecedores cadastrados com as opções:
-- Visualização de todos os fornecedores.
-- Filtragem por categorias ou localização.
+O aplicativo exibe duas seções principais de destinos:
 
-#### Upload de Imagens
+1. **Oeschinen Lake Campground** - Com imagens, título, botões e uma descrição detalhada sobre esse destino específico.
+2. **Lençóis Maranhenses** - Outra seção dedicada ao destino brasileiro, com um banner, título, botões e descrição.
 
-Os usuários podem associar imagens (logotipos ou fotos) aos perfis de fornecedores. A imagem é exibida no componente `<Image>` e armazenada no formato base64.
+A pesquisa por nomes ou palavras-chave relacionadas a esses destinos exibe a seção correspondente. Se a pesquisa estiver vazia, ambas as seções são mostradas.
 
-### Melhorias de Produtividade com React Native
+#### Navegação entre Páginas
 
-React Native melhora a produtividade ao permitir:
-- **Hot Reloading**: Testar mudanças instantaneamente sem recompilar a aplicação.
-- **Componentização**: Reutilizar componentes entre telas e funcionalidades.
-- **Suporte Multi-plataforma**: Criar aplicativos nativos para Android e iOS usando o mesmo código.
+- **Destinos:** Exibe uma lista de destinos de viagem, com descrições e imagens.
+- **Pacotes de Viagem:** Oferece pacotes promocionais, com informações detalhadas sobre cada um.
+- **Contato:** Contém informações de contato da agência, como telefone, e-mail e formulário de envio.
+- **Sobre Nós:** Apresenta a história e a missão da agência de viagens.
 
-### Suporte a Formulários e Validações
+### Implementação de Funcionalidades
 
-Para evitar que o formulário seja enviado com campos vazios, foi implementada uma verificação simples no botão de submissão, garantindo que todos os campos obrigatórios sejam preenchidos antes de enviar o cadastro.
+#### Lógica de Pesquisa e Exibição Dinâmica
 
-```js
-const handleSubmit = () => {
-  if (!name || !address || !contact || !category) {
-    setErrorMessage('Todos os campos são obrigatórios.');
-    return;
-  }
+A lógica de exibição dinâmica de seções baseada na pesquisa foi implementada de forma que o componente `SearchBar` altere o estado da página. O estado é atualizado conforme o usuário digita na barra de pesquisa, exibindo apenas a seção relevante.
 
-  setErrorMessage('');
-  // Lógica para adicionar fornecedor
-};
+#### Bottom Navigation
+
+A barra de navegação inferior (`BottomNavigationBar`) permite ao usuário navegar entre as páginas principais (Destinos, Pacotes, Contato, Sobre Nós). A seleção da página altera o índice, e o conteúdo é trocado dinamicamente.
+
+```dart
+BottomNavigationBar(
+  items: const <BottomNavigationBarItem>[
+    BottomNavigationBarItem(
+      icon: Icon(Icons.place),
+      label: 'Destinos',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.card_travel),
+      label: 'Pacotes',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.contact_mail),
+      label: 'Contato',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.info),
+      label: 'Sobre Nós',
+    ),
+  ],
+  currentIndex: _selectedIndex,
+  onTap: _onItemTapped,
+);
 ```
+
+### Modularização
+
+Os componentes de cada seção (`BannerSection`, `TitleSection`, etc.) foram divididos em arquivos separados, permitindo uma estrutura organizada e reutilização de código. Essa modularização facilita a manutenção e escalabilidade do projeto.
 
 ### Personalização da Interface
 
-O aplicativo foi estilizado utilizando o componente `StyleSheet` do React Native, com foco em uma interface amigável e moderna. O texto é exibido na cor branca para garantir um contraste claro com o fundo escuro, melhorando a legibilidade e a experiência do usuário.
+A interface foi projetada com foco em uma experiência amigável e moderna, utilizando:
 
-```js
-const styles = StyleSheet.create({
-  form: {
-    marginBottom: 20,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-    color: 'white', // Texto branco
-  },
-  error: {
-    color: 'red',
-    marginBottom: 10,
-  },
-});
+- **Cores:** Contrastes claros para facilitar a leitura e melhorar a experiência visual.
+- **Imagens de Qualidade:** Utilização de banners atrativos e representativos de cada destino.
+- **Botões Chamativos:** Botões grandes e facilmente clicáveis para melhorar a interação do usuário.
+
+```dart
+const styles = {
+  'title': TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+  'description': TextStyle(color: Colors.grey[600]),
+};
 ```
 
-### Navegação e Rotas
+### Conclusão e Impacto
 
-A navegação entre a tela de cadastro e a tela de listagem de fornecedores é gerenciada por uma biblioteca de navegação, como o React Navigation. Isso permite que os usuários se movam entre diferentes telas de forma fluida e eficiente.
+O aplicativo de agência de viagens, construído com Flutter, oferece uma experiência completa e intuitiva para os usuários. Com navegação fluida, funcionalidade de pesquisa eficiente e design visual moderno, ele facilita a busca por destinos e pacotes de viagem.
 
-### Integração de Imagens
-
-Para a exibição de imagens associadas aos fornecedores, o aplicativo suporta tanto imagens no formato base64 quanto URLs externas. Essa flexibilidade permite o carregamento dinâmico de logotipos ou fotos relacionadas aos fornecedores.
-
-```js
-<Image
-  style={styles.logo}
-  source={{ uri: 'data:image/png;base64,iVBORw0KGgoAAAANS...' }}
-/>
-```
-
-### Experiência do Usuário
-
-O aplicativo foi projetado com uma interface intuitiva e de fácil uso. Entradas de formulário claras, botões grandes e mensagens de erro visíveis garantem que os usuários possam navegar e adicionar fornecedores sem dificuldades. A atenção ao contraste e ao feedback visual melhora a acessibilidade e a usabilidade da aplicação.
+Flutter permitiu o desenvolvimento rápido com a possibilidade de hot reload e uma única base de código para Android e iOS, acelerando o processo de desenvolvimento e manutenção do aplicativo.
